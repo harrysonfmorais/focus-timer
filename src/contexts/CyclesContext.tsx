@@ -42,7 +42,7 @@ export function CyclesContextProvider({ children }: CycleContextProviderProps) {
       cycles: [],
       activeCycleId: null,
     },
-    () => {
+    (initialState) => {
       const storedStateAsJSON = localStorage.getItem(
         '@focus-timer:cycles-state-1.0.0',
       )
@@ -50,6 +50,8 @@ export function CyclesContextProvider({ children }: CycleContextProviderProps) {
       if (storedStateAsJSON) {
         return JSON.parse(storedStateAsJSON)
       }
+
+      return initialState
     },
   )
 
